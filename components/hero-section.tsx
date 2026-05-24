@@ -31,6 +31,18 @@ const skill = [
   {
     name: "Ant Design",
     icon: "/antd.svg"
+  },
+  {
+    name: "TypeScript",
+    icon: "/typescript.svg"
+  },
+  {
+    name: "Next.js",
+    icon: "/nextjs.svg"
+  },
+  {
+    name: "NestJS",
+    icon: "/nestjs.svg"
   }
 ];
 
@@ -52,6 +64,7 @@ export default function HeroSection() {
                 alt="Profile photo"
                 width={400}
                 height={500}
+                loading="eager"
                 className="w-full rounded-3xl object-cover"
               />
             </div>
@@ -91,8 +104,9 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <p className="text-lg leading-relaxed text-gray-700">
-                My name is Phuong Duy. My strengths are Frontend Developer, ReactJS. I love building UI, user-friendly
-                interfaces and bringing creative designs to life through clean, efficient code.
+                Fullstack Developer with 3+ years of experience building financial and enterprise applications using
+                ReactJS, NextJS, React Native, and NestJS. Experienced in scalable frontend architecture, reusable
+                component systems, CI/CD automation, and Linux server deployment.
               </p>
               <p className="text-lg text-gray-700">Hope you enjoy my portfolio!</p>
             </motion.div>
@@ -107,10 +121,10 @@ export default function HeroSection() {
               <h2 className="text-3xl font-bold text-gray-900">EDUCATION</h2>
               <div className="space-y-2">
                 <h3 className="text-xl font-semibold text-gray-800">2017 - 2021: Can Tho University</h3>
-                <p className="text-gray-700">Softwre Engineering</p>
+                <p className="text-gray-700">Software Engineering</p>
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-gray-800">2013 - 2025: Tra Vinh University</h3>
+                <h3 className="text-xl font-semibold text-gray-800">2023 - 2025: Tra Vinh University</h3>
                 <p className="text-gray-700">English Language</p>
               </div>
             </motion.div>
@@ -153,7 +167,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.2 }}
                   >
                     <span className="text-lg font-bold text-white">
-                      <Image src={skill.icon} alt={skill.name} width={0} height={0} sizes="100vw" className="h-8 w-8" />
+                      <Image src={skill.icon} alt={skill.name} width={32} height={32} className="h-8 w-8" />
                     </span>
                   </motion.div>
                 ))}
@@ -169,8 +183,14 @@ export default function HeroSection() {
               <h2 className="mb-6 text-3xl font-bold text-gray-900">EXPERIENCE</h2>
               <div className="space-y-6">
                 <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                  <h3 className="text-xl font-bold text-gray-800">2022 - Present</h3>
-                  <p className="text-gray-700">Fullstack Developer at MobiFone9</p>
+                  <h3 className="text-xl font-bold text-gray-800">11/2023 - Present</h3>
+                  <p className="font-medium text-red-500">Fullstack Developer</p>
+                  <p className="text-gray-700">MobiFone Service Company Region 9</p>
+                </motion.div>
+                <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                  <h3 className="text-xl font-bold text-gray-800">05/2022 - 10/2023</h3>
+                  <p className="font-medium text-red-500">Frontend Developer</p>
+                  <p className="text-gray-700">MobiFone Service Company Region 9</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -200,7 +220,7 @@ export default function HeroSection() {
             }}
           >
             {[
-              { icon: Phone, text: "09239 227 225" },
+              { icon: Phone, text: "+84-939-227-225" },
               { icon: Mail, text: "hnpdhuy99@gmail.com" },
               { icon: GitHubIcon, text: "github.com/hnphduy99" }
             ].map((item) => (

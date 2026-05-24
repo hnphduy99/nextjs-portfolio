@@ -8,43 +8,53 @@ import { GitHubIcon } from "./icons/GithubIcon";
 
 const personalProjects = [
   {
-    title: "E-commerce Dashboard",
-    category: "React + TypeScript",
-    description: "A comprehensive admin dashboard for managing products, orders, and analytics",
-    image: "/ecommerce-dashboard.png",
-    year: "2024",
-    tools: ["React", "TypeScript", "Tailwind CSS"]
-  },
-  {
-    title: "Task Management App",
-    category: "React + Node.js",
-    description: "Full-stack application for team collaboration and project management",
-    image: "/task-management-app.png",
-    year: "2024",
-    tools: ["React", "Node.js", "MongoDB"]
-  },
-  {
-    title: "Weather Dashboard",
-    category: "React + API Integration",
-    description: "Real-time weather application with interactive maps and forecasts",
-    image: "/weather-dashboard.png",
+    title: "Transportation Management System",
+    category: "ReactJS + NestJS + MySQL",
+    description:
+      "Fullstack TMS with form-heavy and data-driven workflows. Includes customer management, goods management, and transport order tracking with JWT-based RBAC and SMS Brandname notifications.",
+    image: "/placeholder.svg",
     year: "2023",
-    tools: ["React", "Chart.js", "Weather API"]
+    tools: ["ReactJS", "NestJS", "MySQL", "JWT"]
+  },
+  {
+    title: "English Center Management",
+    category: "ReactJS",
+    description:
+      "Web-based LMS and internal management system. Features academic management, learning tracking (programs, courses, classes), user management with RBAC for students, teachers, staff, and parents.",
+    image: "/placeholder.svg",
+    year: "2023",
+    tools: ["ReactJS", "Ant Design", "RESTful API"]
+  },
+  {
+    title: "Financial Management System",
+    category: "ReactJS + NestJS + MySQL",
+    description:
+      "Scalable financial management system at MobiFone Region 9. Built reusable frontend components, implemented GitLab CI/CD pipelines, and managed Linux/Nginx server deployments.",
+    image: "/placeholder.svg",
+    year: "2024",
+    tools: ["ReactJS", "NestJS", "MySQL", "GitLab CI/CD"]
   }
 ];
 
 const techStack = [
   {
-    category: "Skills",
+    category: "Frontend",
     tools: [
-      { name: "Html", icon: "html.svg" },
-      { name: "Css", icon: "css.svg" },
-      { name: "Javascript", icon: "javascript.svg" },
-      { name: "Reactjs", icon: "react.svg" },
+      { name: "ReactJS", icon: "react.svg" },
       { name: "Nextjs", icon: "nextjs.svg" },
+      { name: "TypeScript", icon: "typescript.svg" },
       { name: "Ant Design", icon: "antd.svg" },
       { name: "Tailwind CSS", icon: "tailwindcss.svg" },
-      { name: "Styled Components", icon: "styledcomponents.svg" }
+      { name: "HTML / CSS", icon: "html.svg" }
+    ]
+  },
+  {
+    category: "Backend & DB",
+    tools: [
+      { name: "NestJS", icon: "nestjs.svg" },
+      { name: "NodeJS", icon: "vitejs.svg" },
+      { name: "Linux", icon: "linux.svg" },
+      { name: "Git", icon: "git.svg" }
     ]
   },
   {
@@ -52,17 +62,8 @@ const techStack = [
     tools: [
       { name: "VScode", icon: "vscode.svg" },
       { name: "Postman", icon: "postman.svg" },
-      { name: "Git", icon: "git.svg" },
-      { name: "Figma", icon: "figma.svg" }
-    ]
-  },
-  {
-    category: "Other",
-    tools: [
-      { name: "Linux", icon: "linux.svg" },
-      { name: "DevOps", icon: "devops.png" },
-      { name: "Nestjs", icon: "nestjs.svg" },
-      { name: "Vite", icon: "vitejs.svg" }
+      { name: "Figma", icon: "figma.svg" },
+      { name: "DevOps", icon: "devops.png" }
     ]
   }
 ];
@@ -116,11 +117,11 @@ export default function ServicesSection() {
               >
                 <div className="relative h-80 overflow-hidden bg-gray-100">
                   <Image
-                    src={project.image || "/placeholder.svg"}
+                    src={project.image}
                     alt={project.title}
-                    width={500}
-                    height={500}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
@@ -216,7 +217,7 @@ export default function ServicesSection() {
                           whileHover={{ scale: 1.05 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <Image src={`/${tool.icon}`} width={36} height={36} alt={tool.name} />
+                          <Image src={`/${tool.icon}`} className="h-9 w-9" width={36} height={36} alt={tool.name} />
                         </motion.div>
                       )}
                     </motion.div>

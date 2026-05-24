@@ -168,7 +168,54 @@ export default function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* ... existing contact info sections with motion wrappers ... */}
+            <div>
+              <h3 className="mb-6 text-3xl font-bold text-gray-900">Contact Info</h3>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: Phone,
+                    label: "Phone",
+                    value: "+84-939-227-225",
+                    href: "tel:+84939227225"
+                  },
+                  {
+                    icon: Mail,
+                    label: "Email",
+                    value: "hnphduy99@gmail.com",
+                    href: "mailto:hnphduy99@gmail.com"
+                  },
+                  {
+                    icon: GitHubIcon,
+                    label: "GitHub",
+                    value: "github.com/hnphduy99",
+                    href: "https://github.com/hnphduy99"
+                  }
+                ].map((contact, index) => (
+                  <motion.a
+                    key={index}
+                    href={contact.href}
+                    target={contact.href.startsWith("http") ? "_blank" : undefined}
+                    rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-50">
+                      {React.createElement(contact.icon, { className: "w-5 h-5 text-red-500" })}
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">{contact.label}</p>
+                      <p className="font-medium text-gray-900">{contact.value}</p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-xl bg-white p-6 shadow-sm">
+              <h4 className="mb-2 font-bold text-gray-900">Location</h4>
+              <p className="text-gray-600">Long Chau Ward, Vinh Long City, Vietnam</p>
+            </div>
           </motion.div>
         </div>
 
@@ -198,9 +245,9 @@ export default function ContactSection() {
             }}
           >
             {[
-              { icon: Phone, href: "tel:0939227225" },
-              { icon: Mail, href: "mailto:huynhduylp@gmail.com" },
-              { icon: GitHubIcon, text: "github.com/hnphduy99" }
+              { icon: Phone, href: "tel:+84939227225" },
+              { icon: Mail, href: "mailto:hnpdhuy99@gmail.com" },
+              { icon: GitHubIcon, href: "https://github.com/hnphduy99" }
             ].map((item, index) => (
               <motion.a
                 key={index}
@@ -217,7 +264,7 @@ export default function ContactSection() {
               </motion.a>
             ))}
           </motion.div>
-          <p className="mt-6 text-sm text-gray-500">© 2025 Duy. All rights reserved.</p>
+          <p className="mt-6 text-sm text-gray-500">© 2026 Duy. All rights reserved.</p>
         </motion.div>
       </div>
     </section>

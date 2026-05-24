@@ -20,8 +20,8 @@ export default function AboutSection() {
         >
           <h2 className="mb-6 text-5xl font-bold text-gray-900 md:text-6xl">About Me</h2>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
-            I&apos;m a passionate frontend developer who loves building responsive, user-friendly web applications that
-            deliver exceptional user experiences.
+            Fullstack Developer with 3+ years of experience building financial and enterprise applications. Specialized
+            in scalable frontend architecture, reusable component systems, and CI/CD automation.
           </p>
         </motion.div>
 
@@ -36,12 +36,14 @@ export default function AboutSection() {
             <div>
               <h3 className="mb-4 text-3xl font-bold text-gray-900">My Journey</h3>
               <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                I started my tech journey at Can Tho University, majoring in Software Engineering. After completing my
-                degree, I dedicated time to self-learning and reinforcing my knowledge of HTML, CSS, and ReactJS.
+                I started my tech journey at Can Tho University, majoring in Software Engineering (2017–2021). After
+                graduating, I joined MobiFone Service Company Region 9 where I grew from Frontend Developer to Fullstack
+                Developer building scalable financial and enterprise systems.
               </p>
               <p className="text-lg leading-relaxed text-gray-700">
-                Today, I specialize in ReactJS and modern web technologies, and I’m constantly exploring, learning, and
-                refining my skills to become a better developer every day.
+                I specialize in ReactJS, NextJS, React Native, and NestJS, with hands-on experience in CI/CD pipelines
+                (GitLab), Linux/Nginx deployments, and MySQL. I&apos;m also studying English Language at Tra Vinh
+                University to broaden my communication skills.
               </p>
             </div>
           </motion.div>
@@ -183,20 +185,26 @@ export default function AboutSection() {
                 {
                   year: "2017",
                   title: "Started University",
-                  desc: "Began studying Software Engineering at Can Tho University of Technology",
+                  desc: "Began studying Software Engineering at Can Tho University — graduated 2021",
                   side: "left"
                 },
                 {
-                  year: "2022",
+                  year: "05/2022",
                   title: "Frontend Developer",
-                  desc: "Developed responsive web applications using React",
+                  desc: "Joined MobiFone Service Company Region 9 — built cross-platform apps with ReactJS and React Native, integrated RESTful APIs via NodeJS",
                   side: "right"
                 },
                 {
-                  year: "2024",
+                  year: "11/2023",
                   title: "Fullstack Developer",
-                  desc: "Developed web applications using React.js, Next.js, Nest.js, and MySql. DevOps basic in cloud server",
+                  desc: "Promoted to Fullstack — developed scalable financial management systems with ReactJS, NestJS, and MySQL; implemented GitLab CI/CD and managed Linux/Nginx deployments",
                   side: "left"
+                },
+                {
+                  year: "2023",
+                  title: "English Language Study",
+                  desc: "Enrolled at Tra Vinh University to study English Language (2023–2025) alongside professional work",
+                  side: "right"
                 }
               ].map((item, index) => (
                 <motion.div
