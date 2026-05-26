@@ -196,7 +196,6 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
         </div>
-
         {/* Contact Information */}
         <motion.div
           className="mt-16 border-t border-gray-300 pt-8"
@@ -221,7 +220,7 @@ export default function HeroSection() {
           >
             {[
               { icon: Phone, text: "+84-939-227-225" },
-              { icon: Mail, text: "hnpdhuy99@gmail.com" },
+              { icon: Mail, text: "hnphduy99@gmail.com" },
               { icon: GitHubIcon, text: "github.com/hnphduy99" }
             ].map((item) => (
               <motion.div

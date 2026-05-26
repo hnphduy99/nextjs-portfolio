@@ -1,38 +1,41 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { Code, Database, ExternalLink, Globe, Smartphone } from "lucide-react";
+import { Code, Database, Globe, Smartphone } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
-import { GitHubIcon } from "./icons/GithubIcon";
+import { ProjectCard } from "./project-card";
 
 const personalProjects = [
   {
-    title: "Transportation Management System",
-    category: "ReactJS + NestJS + MySQL",
-    description:
-      "Fullstack TMS with form-heavy and data-driven workflows. Includes customer management, goods management, and transport order tracking with JWT-based RBAC and SMS Brandname notifications.",
-    image: "/placeholder.svg",
-    year: "2023",
-    tools: ["ReactJS", "NestJS", "MySQL", "JWT"]
-  },
-  {
+    id: 1,
     title: "English Center Management",
-    category: "ReactJS",
     description:
       "Web-based LMS and internal management system. Features academic management, learning tracking (programs, courses, classes), user management with RBAC for students, teachers, staff, and parents.",
-    image: "/placeholder.svg",
-    year: "2023",
-    tools: ["ReactJS", "Ant Design", "RESTful API"]
+    type: "Company Project",
+    url: null,
+    repo: null,
+    tags: ["ReactJS", "NestJS", "RESTful API", "MySQL", "JWT", "TypeScript", "Ant Design 4"]
   },
   {
-    title: "Financial Management System",
-    category: "ReactJS + NestJS + MySQL",
+    id: 2,
+    title: "Transportation Management",
     description:
-      "Scalable financial management system at MobiFone Region 9. Built reusable frontend components, implemented GitLab CI/CD pipelines, and managed Linux/Nginx server deployments.",
-    image: "/placeholder.svg",
-    year: "2024",
-    tools: ["ReactJS", "NestJS", "MySQL", "GitLab CI/CD"]
+      "Fullstack TMS with form-heavy and data-driven workflows. Includes customer management, goods management, and transport order tracking with JWT-based RBAC and SMS Brandname notifications.",
+    type: "Company Project",
+    url: null,
+    repo: null,
+    tags: ["ReactJS", "NestJS", "RESTful API", "MySQL", "JWT", "TypeScript", "Ant Design 4"]
+  },
+  {
+    id: 3,
+    title: "Moji Chat App",
+    description:
+      "Real-time messaging platform. Features instant chat via WebSockets, online status tracking, a custom friend management system, image sharing via Cloudinary, and support for both direct and group conversations.",
+    type: "Personal Project",
+    url: "https://web-react-moji-chat.vercel.app/",
+    repo: "https://github.com/hnphduy99/web-react-moji-chat",
+    tags: ["ReactJS", "NodeJS", "Socket.IO", "MongoDB", "Tailwind", "Shacdcn/ui"]
   }
 ];
 
@@ -83,13 +86,14 @@ export default function ServicesSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="mb-4 text-4xl font-bold text-gray-900">Personal Projects</h3>
+            <h3 className="mb-4 text-4xl font-bold text-gray-900">Projects</h3>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Explore some of my personal creative projects that showcase my artistic journey and experimentation.
+              Explore some of my personal and real-world projects that showcase my development journey, practical
+              experience, and experimentation with modern technologies.
             </p>
           </motion.div>
 
-          {/* Personal Projects Section */}
+          {/* Projects Section */}
           <motion.div
             className="grid grid-cols-1 gap-8 md:grid-cols-3"
             initial="hidden"
@@ -105,56 +109,15 @@ export default function ServicesSection() {
               }
             }}
           >
-            {personalProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl"
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="relative h-80 overflow-hidden bg-gray-100">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                  <div className="absolute right-4 bottom-4 left-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="mb-2 flex items-center gap-2">
-                      {project.tools.map((tool, toolIndex) => (
-                        <span key={toolIndex} className="rounded bg-white/20 px-2 py-1 text-xs">
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm">{project.year}</span>
-                      <div className="flex gap-2">
-                        <button className="rounded-full bg-white/20 p-2 transition-colors hover:bg-white/30">
-                          <ExternalLink size={16} />
-                        </button>
-                        <button className="rounded-full bg-white/20 p-2 transition-colors hover:bg-white/30">
-                          <GitHubIcon />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white p-6">
-                  <div className="mb-2 flex items-center justify-between">
-                    <span className="text-sm font-medium text-red-500">{project.category}</span>
-                  </div>
-                  <h4 className="mb-2 text-xl font-bold text-gray-900">{project.title}</h4>
-                  <p className="text-sm leading-relaxed text-gray-600">{project.description}</p>
-                </div>
-              </motion.div>
+            {personalProjects.map((p) => (
+              <ProjectCard
+                key={p.id}
+                title={p.title}
+                description={p.description}
+                tags={p.tags}
+                demoUrl={p.url}
+                repoUrl={p.repo}
+              />
             ))}
           </motion.div>
         </div>

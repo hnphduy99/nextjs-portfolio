@@ -246,7 +246,7 @@ export default function ContactSection() {
           >
             {[
               { icon: Phone, href: "tel:+84939227225" },
-              { icon: Mail, href: "mailto:hnpdhuy99@gmail.com" },
+              { icon: Mail, href: "mailto:hnphuy99@gmail.com" },
               { icon: GitHubIcon, href: "https://github.com/hnphduy99" }
             ].map((item, index) => (
               <motion.a
