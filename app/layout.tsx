@@ -48,6 +48,14 @@ export const metadata: Metadata = {
     description:
       "Portfolio of Huynh Nguyen Phuong Duy, Fullstack Developer specializing in ReactJS, NextJS, NestJS, and React Native."
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png", sizes: "1024x1024" }
+    ],
+    apple: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png"
+  },
   robots: {
     index: true,
     follow: true,
