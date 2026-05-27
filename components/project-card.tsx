@@ -42,7 +42,7 @@ export function ProjectCard({ title, description, tags, demoUrl, repoUrl }: Proj
         <div className="relative flex flex-1 flex-col p-6">
           {/* Header */}
           <div className="mb-4 flex items-start justify-between gap-3">
-            <h3 className="font-heading text-foreground text-base leading-snug font-bold">{title}</h3>
+            <h3 className="font-heading gradient-text text-xl leading-snug font-bold">{title}</h3>
             {/* Status dot */}
             <div
               className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full transition-colors duration-300 ${

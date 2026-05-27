@@ -43,6 +43,22 @@ const personalProjects = [
     url: "https://web-react-moji-chat.vercel.app/",
     repo: "https://github.com/hnphduy99/web-react-moji-chat",
     tags: ["ReactJS", "NodeJS", "Socket.IO", "MongoDB", "Tailwind CSS", "Shadcn/ui"]
+  },
+  {
+    id: 5,
+    title: "Auto Facebook Desktop",
+    description:
+      "Desktop automation tool for Facebook workflows featuring automated posting, interaction handling, browser automation, and account task management through an Electron-based interface integrated with automation scripts.",
+    repo: "https://github.com/hnphduy99/auto-facebook-desktop.git",
+    tags: ["Electron", "ReactJS", "Puppeteer", "TypeScript", "Tailwind CSS"]
+  },
+  {
+    id: 6,
+    title: "React Simple Movie",
+    description: "Simple movie app with TMDB API build in ReactJS when i start to learn frontend",
+    url: "https://react-simple-movie-woad.vercel.app/",
+    repo: "https://github.com/hnphduy99/web-react-simple-movie",
+    tags: ["ReactJS", "TypeScript", "Tailwind CSS"]
   }
 ];
 
