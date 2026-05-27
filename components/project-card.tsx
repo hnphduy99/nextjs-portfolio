@@ -22,68 +22,82 @@ export function ProjectCard({ title, description, tags, demoUrl, repoUrl }: Proj
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="group"
+      className="group h-full"
     >
       <div
-        className="relative h-full overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-800/50 backdrop-blur-sm transition-all duration-300 group-hover:border-purple-500/50"
+        className="border-border-subtle bg-surface-1 hover:bg-surface-2 relative flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:border-purple-500/30"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="absolute -inset-1 rounded-xl bg-linear-to-r from-purple-500/10 to-pink-500/10 opacity-25 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200"></div>
+        {/* Gradient glow on hover */}
+        <div
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{ background: "radial-gradient(circle at top left, rgba(168,85,247,0.06), transparent 60%)" }}
+        />
 
-        <div className="relative flex h-full flex-col">
-          <div className="flex grow flex-col justify-between p-6">
-            <h3 className="mb-2 text-xl font-bold">{title}</h3>
-            <div className="flex flex-1 flex-col justify-between">
-              <p className="mb-4 text-zinc-400">{description}</p>
+        <div className="relative flex flex-1 flex-col p-6">
+          {/* Header */}
+          <div className="mb-4 flex items-start justify-between gap-3">
+            <h3 className="font-heading text-foreground text-base leading-snug font-bold">{title}</h3>
+            {/* Status dot */}
+            <div
+              className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full transition-colors duration-300 ${
+                isHovered ? "bg-green-400" : "bg-white/10"
+              }`}
+            />
+          </div>
 
-              <div className="mb-6 flex flex-wrap gap-2">
-                {tags.map((tag, index) => (
-                  <Badge key={index} variant="secondary" className="bg-zinc-700/50 text-zinc-300 hover:bg-zinc-700">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+          {/* Description */}
+          <p className="text-foreground/55 mb-4 flex-1 text-sm leading-relaxed">{description}</p>
 
-            <div className="mt-auto flex min-h-11.25 justify-between border-t border-zinc-700/50 pt-4">
+          {/* Tags */}
+          <div className="mb-5 flex flex-wrap gap-1.5">
+            {tags.map((tag, i) => (
+              <Badge
+                key={i}
+                variant="secondary"
+                className="text-foreground/50 hover:text-foreground/70 border-border-subtle bg-surface-2 border text-[10px] font-medium hover:border-purple-500/20 hover:bg-purple-500/5"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Actions */}
+          {(repoUrl || demoUrl) && (
+            <div className="border-border-subtle flex items-center gap-2 border-t pt-4">
               {repoUrl && (
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-zinc-400 hover:bg-zinc-700/50 hover:text-white"
+                  className="text-foreground/50 hover:text-foreground hover:bg-surface-2 h-8 px-3 text-xs"
                   asChild
                 >
                   <Link href={repoUrl} target="_blank" rel="noopener noreferrer">
-                    <GitHubIcon className="mr-2 h-4 w-4" />
-                    Code
+                    <GitHubIcon className="mr-1.5 h-3.5 w-3.5" />
+                    Source
                   </Link>
                 </Button>
               )}
               {demoUrl && (
                 <Button
                   size="sm"
-                  className="border-0 bg-linear-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500"
+                  className="h-8 px-3 text-xs text-white"
+                  style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
                   asChild
                 >
                   <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
                     Live Demo
-                    <ArrowUpRight className="ml-2 h-4 w-4" />
+                    <ArrowUpRight className="ml-1 h-3 w-3" />
                   </Link>
                 </Button>
               )}
             </div>
-          </div>
-
-          <div className="absolute top-3 right-3 z-20">
-            <div
-              className={`h-3 w-3 rounded-full ${isHovered ? "bg-green-500" : "bg-zinc-500"} transition-colors duration-300`}
-            ></div>
-          </div>
+          )}
         </div>
       </div>
     </motion.div>

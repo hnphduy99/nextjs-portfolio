@@ -1,16 +1,79 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { Award, Code, Laptop, Users } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
+
+const techStack = [
+  { name: "React", icon: "/react.svg" },
+  { name: "Next.js", icon: "/nextjs.svg" },
+  { name: "TypeScript", icon: "/typescript.svg" },
+  { name: "NestJS", icon: "/nestjs.svg" },
+  { name: "Tailwind CSS", icon: "/tailwindcss.svg" },
+  { name: "HTML", icon: "/html.svg" },
+  { name: "CSS", icon: "/css.svg" },
+  { name: "JavaScript", icon: "/javascript.svg" },
+  { name: "Git", icon: "/git.svg" },
+  { name: "Linux", icon: "/linux.svg" },
+  { name: "Ant Design", icon: "/antd.svg" }
+];
+
+const stats = [
+  { value: "3+", label: "Years Experience" },
+  { value: "10+", label: "Projects Shipped" },
+  { value: "1", label: "Companies" }
+];
+
+const values = [
+  {
+    icon: Code,
+    title: "Clean Code",
+    desc: "Writing maintainable, scalable code following best practices"
+  },
+  {
+    icon: Laptop,
+    title: "Modern Stack",
+    desc: "Always learning and adopting the latest frontend technologies"
+  },
+  {
+    icon: Users,
+    title: "User First",
+    desc: "Interfaces that prioritize experience and accessibility"
+  },
+  {
+    icon: Award,
+    title: "Quality",
+    desc: "Delivering high-performance apps with attention to detail"
+  }
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 export default function AboutSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-white py-20" ref={ref}>
-      <div className="mx-auto max-w-7xl px-8 md:px-16">
+    <section id="about" ref={ref} className="relative py-24 md:py-32">
+      {/* Subtle bg accent */}
+      <div
+        className="pointer-events-none absolute top-0 right-0 -z-10 h-80 w-80 rounded-full opacity-10 blur-3xl"
+        style={{ background: "radial-gradient(circle, #a855f7, transparent 70%)" }}
+      />
+
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* Section Header */}
         <motion.div
           className="mb-16 text-center"
@@ -18,251 +81,149 @@ export default function AboutSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-5xl font-bold text-gray-900 md:text-6xl">About Me</h2>
-          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
-            Fullstack Developer with 3+ years of experience building financial and enterprise applications. Specialized
-            in scalable frontend architecture, reusable component systems, and CI/CD automation.
-          </p>
+          <p className="text-foreground/40 mb-3 text-sm font-medium tracking-widest uppercase">Get to know me</p>
+          <h2 className="font-heading text-4xl font-bold md:text-5xl">
+            About <span className="gradient-text">Me</span>
+          </h2>
         </motion.div>
 
-        <div className="mb-20 grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          {/* Left Content */}
+        <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
+          {/* Left — Bio + Stats */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <div>
-              <h3 className="mb-4 text-3xl font-bold text-gray-900">My Journey</h3>
-              <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                I started my tech journey at Can Tho University, majoring in Software Engineering (2017–2021). After
-                graduating, I joined MobiFone Service Company Region 9 where I grew from Frontend Developer to Fullstack
-                Developer building scalable financial and enterprise systems.
+            <div className="text-foreground/70 space-y-4 text-base leading-relaxed md:text-lg">
+              <p>
+                I started my tech journey at <strong className="text-foreground">Can Tho University</strong>, majoring
+                in Software Engineering (2017–2021). After graduating, I joined{" "}
+                <strong className="text-foreground">MobiFone Service Company Region 9</strong> where I grew from
+                Frontend to Fullstack Developer.
               </p>
-              <p className="text-lg leading-relaxed text-gray-700">
-                I specialize in ReactJS, NextJS, React Native, and NestJS, with hands-on experience in CI/CD pipelines
-                (GitLab), Linux/Nginx deployments, and MySQL. I&apos;m also studying English Language at Tra Vinh
-                University to broaden my communication skills.
+              <p>
+                I specialize in{" "}
+                <span className="gradient-text font-semibold">ReactJS, NextJS, React Native, and NestJS</span>, with
+                hands-on experience in CI/CD pipelines (GitLab), Linux/Nginx deployments, and MySQL database.
               </p>
             </div>
-          </motion.div>
-          {/* Values */}
-          <motion.div
-            className="grid grid-cols-2 gap-6"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                  delayChildren: 0.4
-                }
-              }
-            }}
-          >
-            {[
-              {
-                icon: Code,
-                title: "Clean Code",
-                desc: "Writing maintainable, scalable code that follows best practices",
-                color: "text-red-500"
-              },
-              {
-                icon: Laptop,
-                title: "Modern Tech",
-                desc: "Staying updated with latest frontend technologies and trends",
-                color: "text-red-500"
-              },
-              {
-                icon: Users,
-                title: "User-Focused",
-                desc: "Building interfaces that prioritize user experience and accessibility",
-                color: "text-red-500"
-              },
-              {
-                icon: Award,
-                title: "Quality",
-                desc: "Delivering high-performance applications with attention to detail",
-                color: "text-red-500"
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                className="cursor-pointer rounded-2xl bg-gray-50 p-6 text-center"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.05, backgroundColor: "#fef2f2" }}
-                transition={{ duration: 0.2 }}
-              >
-                <value.icon className={`h-8 w-8 ${value.color} mx-auto mb-3`} />
-                <h4 className="mb-2 font-semibold text-gray-900">{value.title}</h4>
-                <p className="text-sm text-gray-600">{value.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
 
-          {/* Right Content - Image */}
-          {/* <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="relative rounded-3xl overflow-hidden">
-              <Image
-                src="/artist-studio.png"
-                alt="Artist working in studio"
-                width={500}
-                height={600}
-                className="object-cover w-full"
-              />
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-4">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  className="gradient-border bg-surface-1 rounded-2xl p-4 text-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
+                  whileHover={{ scale: 1.04 }}
+                >
+                  <div className="font-heading gradient-text mb-1 text-3xl font-bold">{stat.value}</div>
+                  <div className="text-foreground/50 text-xs">{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
-            <motion.div
-              className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-lg p-6 border"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={
-                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-              }
-              transition={{ duration: 0.6, delay: 0.8 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-red-500">4+</div>
-                <div className="text-sm text-gray-600">Years Experience</div>
-              </div>
-            </motion.div>
-            <motion.div
-              className="absolute -top-8 -right-8 bg-white rounded-2xl shadow-lg p-6 border"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={
-                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-              }
-              transition={{ duration: 0.6, delay: 1.0 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-red-500">50+</div>
-                <div className="text-sm text-gray-600">Projects Completed</div>
-              </div>
-            </motion.div>
-          </motion.div> */}
-        </div>
 
-        {/* Timeline */}
-        <motion.div
-          className="mx-auto max-w-4xl"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <h3 className="mb-12 text-center text-3xl font-bold text-gray-900">My Development Timeline</h3>
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 h-full w-1 -translate-x-1/2 transform bg-gray-200"></div>
-
-            {/* Timeline Items */}
+            {/* Values Grid */}
             <motion.div
-              className="space-y-12"
+              className="grid grid-cols-2 gap-3"
+              variants={containerVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.2,
-                    delayChildren: 0.8
-                  }
-                }
-              }}
             >
-              {[
-                {
-                  year: "2017",
-                  title: "Started University",
-                  desc: "Began studying Software Engineering at Can Tho University — graduated 2021",
-                  side: "left"
-                },
-                {
-                  year: "05/2022",
-                  title: "Frontend Developer",
-                  desc: "Joined MobiFone Service Company Region 9 — built cross-platform apps with ReactJS and React Native, integrated RESTful APIs via NodeJS",
-                  side: "right"
-                },
-                {
-                  year: "11/2023",
-                  title: "Fullstack Developer",
-                  desc: "Promoted to Fullstack — developed scalable financial management systems with ReactJS, NestJS, and MySQL; implemented GitLab CI/CD and managed Linux/Nginx deployments",
-                  side: "left"
-                },
-                {
-                  year: "2023",
-                  title: "English Language Study",
-                  desc: "Enrolled at Tra Vinh University to study English Language (2023–2025) alongside professional work",
-                  side: "right"
-                }
-              ].map((item, index) => (
+              {values.map((v) => (
                 <motion.div
-                  key={index}
-                  className="flex items-center"
-                  variants={{
-                    hidden: { opacity: 0, x: item.side === "left" ? -50 : 50 },
-                    visible: { opacity: 1, x: 0 }
-                  }}
+                  key={v.title}
+                  className="border-border-subtle bg-surface-1 hover:border-border-medium hover:bg-surface-2 rounded-xl border p-4 transition-colors"
+                  variants={itemVariants}
+                  whileHover={{ y: -2 }}
                 >
-                  {item.side === "left" ? (
-                    <>
-                      <div className="flex-1 pr-8 text-right">
-                        <motion.div
-                          className="rounded-2xl border bg-white p-6 shadow-sm"
-                          whileHover={{
-                            scale: 1.02,
-                            boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
-                          }}
-                        >
-                          <h4 className="mb-2 font-bold text-gray-900">{item.year}</h4>
-                          <h5 className="mb-2 font-semibold text-red-500">{item.title}</h5>
-                          <p className="text-sm text-gray-600">{item.desc}</p>
-                        </motion.div>
-                      </div>
-                      <motion.div
-                        className="relative z-10 h-4 w-4 rounded-full bg-red-500"
-                        whileHover={{ scale: 1.5 }}
-                      ></motion.div>
-                      <div className="flex-1 pl-8"></div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="flex-1 pr-8"></div>
-                      <motion.div
-                        className="relative z-10 h-4 w-4 rounded-full bg-red-500"
-                        whileHover={{ scale: 1.5 }}
-                      ></motion.div>
-                      <div className="flex-1 pl-8 text-left">
-                        <motion.div
-                          className="rounded-2xl border bg-white p-6 shadow-sm"
-                          whileHover={{
-                            scale: 1.02,
-                            boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
-                          }}
-                        >
-                          <h4 className="mb-2 font-bold text-gray-900">{item.year}</h4>
-                          <h5 className="mb-2 font-semibold text-red-500">{item.title}</h5>
-                          <p className="text-sm text-gray-600">{item.desc}</p>
-                        </motion.div>
-                      </div>
-                    </>
-                  )}
+                  <v.icon className="mb-2 h-5 w-5" style={{ color: "#a855f7" }} />
+                  <h4 className="font-heading text-foreground mb-1 text-sm font-semibold">{v.title}</h4>
+                  <p className="text-foreground/50 text-xs leading-relaxed">{v.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Right — Tech Stack */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            <h3 className="font-heading mb-6 text-2xl font-bold">
+              Tech <span className="gradient-text">Stack</span>
+            </h3>
+            <p className="text-foreground/50 mb-8 text-sm">
+              Tools and technologies I use to build scalable, production-grade applications.
+            </p>
+
+            <motion.div
+              className="grid grid-cols-3 gap-3 sm:grid-cols-4"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              {techStack.map((tech) => (
+                <motion.div
+                  key={tech.name}
+                  className="group border-border-subtle bg-surface-1 flex flex-col items-center gap-2 rounded-xl border p-3 transition-all hover:border-purple-500/30 hover:bg-purple-500/5"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                >
+                  <div className="bg-surface-2 flex h-10 w-10 items-center justify-center rounded-lg p-2 transition-colors group-hover:bg-purple-500/10">
+                    <Image src={tech.icon} alt={tech.name} width={28} height={28} className="object-contain" />
+                  </div>
+                  <span className="text-foreground/50 group-hover:text-foreground/80 text-center text-[11px] leading-tight font-medium transition-colors">
+                    {tech.name}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Education */}
+            <motion.div
+              className="mt-10 space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <h3 className="font-heading mb-4 text-xl font-bold">
+                <span className="gradient-text">Education</span>
+              </h3>
+              {[
+                {
+                  period: "2017 – 2021",
+                  school: "Can Tho University",
+                  major: "Software Engineering"
+                },
+                {
+                  period: "2023 – 2025",
+                  school: "Tra Vinh University",
+                  major: "English Language"
+                }
+              ].map((edu) => (
+                <div
+                  key={edu.school}
+                  className="border-border-subtle bg-surface-1 flex items-start gap-4 rounded-xl border p-4"
+                >
+                  <div
+                    className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
+                    style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
+                  />
+                  <div>
+                    <p className="text-foreground/40 text-xs">{edu.period}</p>
+                    <p className="font-heading text-foreground text-sm font-semibold">{edu.school}</p>
+                    <p className="text-foreground/60 text-xs">{edu.major}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ export default function TypewriterText({
   typingSpeed = 100,
   deletingSpeed = 50,
   pauseTime = 2000,
-  loopTexts = true,
+  loopTexts = true
 }: Props) {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -52,8 +52,11 @@ export default function TypewriterText({
 
     if (isDeleting && index === 0) {
       // Xoá hết thì qua câu tiếp
-      setIsDeleting(false);
-      setLoop((prev) => prev + 1);
+      setTimeout(() => {
+        setIsDeleting(false);
+        setLoop((prev) => prev + 1);
+      }, 0);
+      return;
     }
 
     const timeout = setTimeout(() => {
@@ -62,29 +65,12 @@ export default function TypewriterText({
     }, speed);
 
     return () => clearTimeout(timeout);
-  }, [
-    index,
-    isDeleting,
-    loop,
-    text,
-    typingSpeed,
-    deletingSpeed,
-    pauseTime,
-    loopTexts,
-  ]);
+  }, [index, isDeleting, loop, text, typingSpeed, deletingSpeed, pauseTime, loopTexts]);
 
   return (
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      className={className}
-    >
+    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className={className}>
       {displayedText}
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ repeat: Infinity, duration: 1 }}
-      >
+      <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1 }}>
         |
       </motion.span>
     </motion.span>
