@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, FileText } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { GitHubIcon } from "./icons/GithubIcon";
@@ -147,15 +147,23 @@ export default function HeroSection() {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  const pdfUrl = "/cv/CV_HuynhNguyenPhuongDuy_ReactFullstackDeveloper.pdf";
+
+                  const link = document.createElement("a");
+                  link.href = pdfUrl;
+                  link.download = "CV_HuynhNguyenPhuongDuy_ReactFullstackDeveloper.pdf";
+
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
                 }}
                 className="flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-all"
                 style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(168,85,247,0.4)" }}
                 whileTap={{ scale: 0.97 }}
               >
-                <Mail size={16} />
-                Get in Touch
+                <FileText size={16} />
+                Download CV
               </motion.a>
 
               <motion.a
