@@ -1,18 +1,20 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { ArrowDown, FileText } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { GitHubIcon } from "./icons/GithubIcon";
+import Marquee from "./seraui/marquee";
 import TypewriterText from "./typewriter/TypewriterText";
 
 const techIcons = [
-  { name: "React", icon: "/react.svg" },
+  { name: "ReactJS", icon: "/react.svg" },
   { name: "Next.js", icon: "/nextjs.svg" },
   { name: "TypeScript", icon: "/typescript.svg" },
   { name: "NestJS", icon: "/nestjs.svg" },
-  { name: "Tailwind", icon: "/tailwindcss.svg" },
+  { name: "TailwindCSS", icon: "/tailwindcss.svg" },
   { name: "HTML", icon: "/html.svg" },
   { name: "CSS", icon: "/css.svg" },
   { name: "JavaScript", icon: "/javascript.svg" },
@@ -132,8 +134,9 @@ export default function HeroSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.55 }}
             >
-              3+ years building financial and enterprise applications. Specialized in scalable frontend architecture,
-              CI/CD pipelines, and Linux deployments.
+              Full-stack developer with 3+ years of experience buildig web applications using ReactJS, NextJS, and
+              NestJS, Experienced in RESTful API development, CI/CD automation, and Linux server management. Eager to
+              contribute to building high-quality, scalable products.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -183,28 +186,39 @@ export default function HeroSection() {
 
         {/* Tech Marquee */}
         <motion.div
-          className="mt-16 overflow-hidden"
+          className="overflow-hidden"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <p className="text-foreground/30 mb-4 text-center text-xs font-medium tracking-widest uppercase">
-            Tech Stack
-          </p>
-          <div className="relative">
-            <div className="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r to-transparent" />
-            <div className="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l to-transparent" />
-            <div className="animate-marquee flex w-[200%] gap-8">
-              {[...techIcons, ...techIcons].map((tech, i) => (
-                <div key={i} className="flex shrink-0 flex-col items-center gap-2" title={tech.name}>
-                  <div className="border-border-subtle bg-surface-1 hover:border-border-medium hover:bg-surface-2 flex h-10 w-10 items-center justify-center rounded-xl border p-2 transition-colors">
-                    <Image src={tech.icon} alt={tech.name} width={24} height={24} />
+          <Marquee speed={60} pauseOnHover className="py-4">
+            {techIcons.map((tech) => (
+              <div
+                key={tech.name}
+                className="group/tech relative m-3 flex h-fit w-36 min-w-fit cursor-pointer flex-col items-center justify-center rounded-lg transition-transform duration-300 ease-out will-change-transform hover:scale-105 sm:m-5"
+              >
+                <div
+                  className={cn(
+                    "h-full w-full rounded-lg border border-gray-200 bg-gray-50 shadow-sm transition-colors duration-300 ease-out group-hover/tech:border-violet-500 dark:border-gray-700 dark:bg-gray-800 dark:shadow-gray-900/50 dark:group-hover/tech:border-violet-400"
+                  )}
+                >
+                  <div className="flex -translate-y-px justify-center">
+                    <div className="w-3/4">
+                      <div className="h-px w-full bg-linear-to-r from-transparent via-violet-500 to-transparent dark:via-violet-400"></div>
+                    </div>
                   </div>
-                  <span className="text-foreground/40 text-[10px]">{tech.name}</span>
+                  <div className="flex flex-col items-center justify-center gap-3 p-6">
+                    <div className="flex h-8 items-center justify-center sm:h-10">
+                      <span className="flex h-full w-auto items-center justify-center rounded-lg">
+                        <Image src={tech.icon} alt={tech.name} width={30} height={30} />
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-gray-800 sm:text-lg dark:text-gray-200">{tech.name}</p>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            ))}
+          </Marquee>
         </motion.div>
       </div>
 

@@ -38,7 +38,7 @@ const timelineItems = [
     title: "Fullstack Developer",
     organization: "MobiFone Service Company Region 9",
     description:
-      "Promoted to Fullstack — developed scalable financial management systems (ERP, TMS, LMS,...) with ReactJS, NestJS, and MySQL. Implemented GitLab CI/CD pipelines and managed Linux/Nginx production deployments.",
+      "Promoted to Fullstack — developed scalable management systems (ERP, TMS, LMS,...) with ReactJS, NestJS, and MySQL. Implemented GitLab CI/CD pipelines and managed Linux/Nginx production deployments.",
     side: "right"
   }
 ];
@@ -81,7 +81,7 @@ export default function ExperienceSection() {
           />
 
           <div className="space-y-8 md:space-y-0">
-            {timelineItems.map((item, index) => {
+            {timelineItems.toReversed().map((item, index) => {
               const isLeft = item.side === "left";
               return (
                 <motion.div
