@@ -147,19 +147,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.65 }}
             >
               <motion.a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const pdfUrl = "/cv/CV_HuynhNguyenPhuongDuy_ReactFullstackDeveloper.pdf";
-
-                  const link = document.createElement("a");
-                  link.href = pdfUrl;
-                  link.download = "CV_HuynhNguyenPhuongDuy_ReactFullstackDeveloper.pdf";
-
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
+                href="https://drive.google.com/file/d/1XLlhqaBiHG2DAo6CHfq4PGexKLm_bYol/view?usp=drive_link"
+                target="_blank"
                 className="flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-all"
                 style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(168,85,247,0.4)" }}
@@ -224,7 +213,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.button
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-2 left-1/2 -translate-x-1/2"
         onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}

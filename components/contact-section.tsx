@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { GitHubIcon } from "./icons/GithubIcon";
 
@@ -92,7 +92,7 @@ export default function ContactSection() {
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-5">
           {/* Form — 3 cols */}
-          <motion.div
+          {/* <motion.div
             className="lg:col-span-3"
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
@@ -207,11 +207,11 @@ export default function ContactSection() {
                 </form>
               )}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Contact Info — 2 cols */}
           <motion.div
-            className="flex flex-col gap-4 lg:col-span-2"
+            className="flex flex-col gap-4 lg:col-span-5"
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
             transition={{ duration: 0.7, delay: 0.3 }}
